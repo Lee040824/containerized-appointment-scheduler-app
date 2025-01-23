@@ -35,6 +35,11 @@ media
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 
+# General
+**/.DS_Store
+*.DS_Store
+.DS_Store
+
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
