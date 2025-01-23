@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo $AWS_DEFAULT_REGION
+      - ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+      - echo $ACCOUNT_ID
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      
+  build:
+    commands:
+      - docker build -t appointments-app-container .
+      - docker tag appointments-app-container:latest $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/containers-image-repository:latest
+      - docker tag appointments-app-container:latest $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/containers-image-repository:staging-test-image
+      - docker tag appointments-app-container:latest $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/containers-image-repository:${CODEBUILD_RESOLVED_SOURCE_VERSION}
+      
+  post_build:
+    commands:
+      - docker push --all-tags $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/containers-image-repository

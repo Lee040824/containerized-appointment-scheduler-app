@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+
+  pre_build: # This phase will be used to create a kubeconfig file for the Amazon EKS cluster.
+    commands:
+      # Insert an AWS CLI command to create a kubeconfig file for the Amazon EKS cluster named eks-cluster.
+      - aws eks update-kubeconfig --name eks-cluster
+
+  build: # This phase will be used to delete any existing application pods and then redeploy the application pods to Amazon EKS cluster from the manifests files.
+    commands:
+      # Insert a kubectl command to delete the existing application deployments (if any).
+      - kubectl delete -f manifests/appointments-deployment.yml --ignore-not-found
+      # Insert a kubectl command to deploy all the manifests files in the manifest/ directory.
+      - kubectl apply -f manifests/.
+
+  post_build: # This phase will be used to display the Application Load Balancer DNSName to access the application.
+    commands:
+      # Insert a command to wait for 30 seconds.
+      - sleep 30
+      # Insert an AWS CLI command to retrieve Application Load Balancer DNSName.
+      - aws elbv2 describe-load-balancers --query 'LoadBalancers[*].[DNSName]' --output text
+
