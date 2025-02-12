@@ -1,7 +1,7 @@
 # Containerized Appointment Scheduler Application
 
 ## Project Overview
-This project is a salon appointment scheduler that will allow customers to book appointments, select the stylist, and select services. A senior developer developer pushedthe  initial draft version of the application but didn't complete the application.
+This project is a salon appointment scheduler that will allow customers to book appointments, select the stylist, and select services. A senior developer developed and  pushed the  initial draft version of the application but didn't complete the application.
 
 I was challenged to improve the web application and deploy it into a containerized environment through a continuous integration and continuous delivery (CI/CD) pipeline.
 
