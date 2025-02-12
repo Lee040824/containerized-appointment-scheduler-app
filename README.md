@@ -1,7 +1,7 @@
 # Containerized Appointment Scheduler Application
 
 ## Project Overview
-This projetc is a salon appointment scheduler that will allow customers to book appointments, select the stylist and select services. A senior developer developer pushed initial draft version of the application but didn't complete the application.
+This project is a salon appointment scheduler that will allow customers to book appointments, select the stylist, and select services. A senior developer developer pushedthe  initial draft version of the application but didn't complete the application.
 
 I was challenged to improve the web application and deploy it into a containerized environment through a continuous integration and continuous delivery (CI/CD) pipeline.
 
@@ -10,7 +10,7 @@ I was challenged to improve the web application and deploy it into a containeriz
 ### Customer Features
 1. Appointment Booking
    - Schedule new appointments
-   - Select preferred stylist
+   - Select a preferred stylist
    - Choose from available service offerings
    - Pick convenient time slots
    - View available appointment times
@@ -40,7 +40,7 @@ I was challenged to improve the web application and deploy it into a containeriz
 ![Architecture Diagram](images/appointment-scheduler-architecture.png)
 
 ### Image Description
-Made updates to application code using an AWS supported IDE. I then push the code changes to a Git repository. This initiates a new CI/CD pipeline in AWS CodePipeline, which uses AWS CodeBuild to run unit tests and build the container image for the project. The image is pushed to Amazon ECR. After the image is pushed to Amazon ECR, the final step in the CI/CD pipeline deploys the project to the Amazon EKS cluster. The application frontend runs on containers, and the application is backed by two database services: Amazon Relational Database Service (Amazon RDS) and Amazon DynamoDB.
+Made updates to application code using an AWS-supported IDE. I then push the code changes to a Git repository. This initiates a new CI/CD pipeline in AWS CodePipeline, which uses AWS CodeBuild to run unit tests and build the container image for the project. The image is pushed to Amazon ECR. After the image is pushed to Amazon ECR, the final step in the CI/CD pipeline deploys the project to the Amazon EKS cluster. The application frontend runs on containers, and the application is backed by two database services: Amazon Relational Database Service (Amazon RDS) and Amazon DynamoDB.
 
 ### System Components
 - **Frontend**: Container-based web interface
